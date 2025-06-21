@@ -127,7 +127,6 @@ function initializeChart() {
               label += `Malf Misfire Chance: ${type.MalfMisfireChance}\n`;
               label += `Heat Factor: ${type.HeatFactor}\n`;
               label += `Durability Burn Modifier: ${type.DurabilityBurnModificator}\n`;
-              label += `Weight: ${type.Weight}\n`;
               return label.split("\n");
             },
           },
@@ -293,7 +292,7 @@ function createCaliberButtons() {
     const symbolIndex = getIndex(caliber, symbolMap);
 
     const button = document.createElement("button");
-    button.innerHTML = `<span style="color:${colorMap[colorIndex]}; font-size: 20px;">&#9679;</span> ${caliber}`;
+    button.innerHTML = caliber;
     button.style.color = colorMap[colorIndex];
     if (selectedCalibers.has(caliber)) {
       button.classList.add("active");
@@ -310,6 +309,18 @@ function createCaliberButtons() {
       updateChart();
     });
     caliberButtonsDiv.appendChild(button);
+  });
+}
+
+function updateCaliberButtonStates() {
+  const buttons = document.querySelectorAll("#caliberButtons button");
+  buttons.forEach((button) => {
+    const caliber = button.textContent.trim();
+    if (selectedCalibers.has(caliber)) {
+      button.classList.add("active");
+    } else {
+      button.classList.remove("active");
+    }
   });
 }
 
@@ -342,6 +353,19 @@ document.addEventListener("DOMContentLoaded", () => {
       useDynamicScaling = this.checked;
       updateChart();
     });
+  document.getElementById("selectAllBtn").addEventListener("click", () => {
+    selectedCalibers = new Set(Object.keys(data.item));
+    saveSelectedCalibers();
+    updateCaliberButtonStates();
+    updateChart();
+  });
+
+  document.getElementById("deselectAllBtn").addEventListener("click", () => {
+    selectedCalibers.clear();
+    saveSelectedCalibers();
+    updateCaliberButtonStates();
+    updateChart();
+  });
 
   document.getElementById("x-axis-select").value = xAxis;
   document.getElementById("y-axis-select").value = yAxis;
