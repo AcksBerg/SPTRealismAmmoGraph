@@ -49,50 +49,59 @@
   <body>
     <div id="ammoChartContainer">
       <div id="axisSelectContainer">
-        <label for="x-axis-select">X-Axis:</label>
-        <select id="x-axis-select">
-          <option value="PenetrationPower">Penetration</option>
-          <option value="Damage">Damage</option>
-          <option value="ArmorDamage">Armor Damage</option>
-          <option value="ProjectileCount">Projectile Count</option>
-          <option value="InitialSpeed">Initial Speed</option>
-          <option value="BallisticCoeficient">Ballistic Coefficient</option>
-          <option value="RicochetChance">Ricochet Chance</option>
-          <option value="FragmentationChance">Fragmentation Chance</option>
-          <option value="BulletMassGram">Bullet Mass (g)</option>
-          <option value="HeavyBleedingDelta">Heavy Bleeding Delta</option>
-          <option value="LightBleedingDelta">Light Bleeding Delta</option>
-          <option value="MalfFeedChance">Malf Feed Chance</option>
-          <option value="MalfMisfireChance">Malf Misfire Chance</option>
-          <option value="HeatFactor">Heat Factor</option>
-          <option value="DurabilityBurnModificator">
-            Durability Burn Modificator
-          </option>
-        </select>
         <label for="y-axis-select">Y-Axis:</label>
         <select id="y-axis-select">
-          <option value="PenetrationPower">Penetration</option>
+          <option value="PenetrationPower">PenetrationPower</option>
+          <option value="ArmorDamage">ArmorDamage</option>
+          <option value="ProjectileCount">ProjectileCount</option>
           <option value="Damage">Damage</option>
-          <option value="ArmorDamage">Armor Damage</option>
-          <option value="ProjectileCount">Projectile Count</option>
-          <option value="InitialSpeed">Initial Speed</option>
-          <option value="BallisticCoeficient">Ballistic Coefficient</option>
-          <option value="RicochetChance">Ricochet Chance</option>
-          <option value="FragmentationChance">Fragmentation Chance</option>
-          <option value="BulletMassGram">Bullet Mass (g)</option>
-          <option value="HeavyBleedingDelta">Heavy Bleeding Delta</option>
-          <option value="LightBleedingDelta">Light Bleeding Delta</option>
-          <option value="MalfFeedChance">Malf Feed Chance</option>
-          <option value="MalfMisfireChance">Malf Misfire Chance</option>
-          <option value="HeatFactor">Heat Factor</option>
+          <option value="InitialSpeed">InitialSpeed</option>
+          <option value="BallisticCoeficient">BallisticCoeficient</option>
+          <option value="RicochetChance">RicochetChance</option>
+          <option value="FragmentationChance">FragmentationChance</option>
+          <option value="BulletMassGram">BulletMassGram</option>
+          <option value="HeavyBleedingDelta">HeavyBleedingDelta</option>
+          <option value="LightBleedingDelta">LightBleedingDelta</option>
+          <option value="ammoAccr">ammoAccr</option>
+          <option value="ammoHear">ammoHear</option>
+          <option value="ammoRec">ammoRec</option>
+          <option value="MalfMisfireChance">MalfMisfireChance</option>
+          <option value="MisfireChance">MisfireChance</option>
+          <option value="MalfFeedChance">MalfFeedChance</option>
           <option value="DurabilityBurnModificator">
-            Durability Burn Modificator
+            DurabilityBurnModificator
           </option>
+          <option value="HeatFactor">HeatFactor</option>
         </select>
-        <span
-          >Current Version: SPT 3.9.8 and RM 1.4.5 (with backport from
-          3.10)</span
-        >
+        <label for="x-axis-select">X-Axis:</label>
+        <select id="x-axis-select">
+          <option value="PenetrationPower">PenetrationPower</option>
+          <option value="ArmorDamage">ArmorDamage</option>
+          <option value="ProjectileCount">ProjectileCount</option>
+          <option value="Damage">Damage</option>
+          <option value="InitialSpeed">InitialSpeed</option>
+          <option value="BallisticCoeficient">BallisticCoeficient</option>
+          <option value="RicochetChance">RicochetChance</option>
+          <option value="FragmentationChance">FragmentationChance</option>
+          <option value="BulletMassGram">BulletMassGram</option>
+          <option value="HeavyBleedingDelta">HeavyBleedingDelta</option>
+          <option value="LightBleedingDelta">LightBleedingDelta</option>
+          <option value="ammoAccr">ammoAccr</option>
+          <option value="ammoHear">ammoHear</option>
+          <option value="ammoRec">ammoRec</option>
+          <option value="MalfMisfireChance">MalfMisfireChance</option>
+          <option value="MisfireChance">MisfireChance</option>
+          <option value="MalfFeedChance">MalfFeedChance</option>
+          <option value="DurabilityBurnModificator">
+            DurabilityBurnModificator
+          </option>
+          <option value="HeatFactor">HeatFactor</option>
+        </select>
+        <span>Current Version: SPT 3.11.3 and RM 1.6.0</span>
+        <label>
+          <input type="checkbox" id="dynamic-scaling-toggle" />
+          Dynamic axis scale
+        </label>
       </div>
       <div class="caliber-buttons" id="caliberButtons"></div>
       <canvas id="ammoChart"></canvas>
