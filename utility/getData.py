@@ -127,6 +127,7 @@ new_data.sort(key=lambda x: x["caliber"])
 rm_data = []
 find_id = re.compile(r'(?<=== ")[a-fA-F0-9]+(?=")')
 find_data = re.compile(r'(?<=\._props\.)([a-zA-Z]+) = (-?[0-9]+\.?[0-9]*)')
+rm_found = True
 try:
     with (open(path_rm, mode="r", encoding="UTF-8")) as file:
         # Read till the loadAmmoStats function
@@ -155,19 +156,20 @@ try:
                 current_item[line_data[0][0]] = float(line_data[0][1])
 except OSError:
     print("The RM-File could not be read")
-    exit()
+    rm_found = False
 
 # Only take the rm data for the preselected items
-data_ids = [item["id"] for item in new_data]
-rm_data = list(filter(lambda x: x["id"] in data_ids, rm_data))
-for item in rm_data:
-    # Find the orig item
-    index = [i for i, x in enumerate(new_data) if x["id"] == item["id"]][0]
-    # Loop through the rm item and apply keys which are also present in the orig item
-    for key, value in item.items():
-        if key not in new_data[index].keys():
-            continue
-        new_data[index][key] = value
+if rm_found:
+    data_ids = [item["id"] for item in new_data]
+    rm_data = list(filter(lambda x: x["id"] in data_ids, rm_data))
+    for item in rm_data:
+        # Find the orig item
+        index = [i for i, x in enumerate(new_data) if x["id"] == item["id"]][0]
+        # Loop through the rm item and apply keys which are also present in the orig item
+        for key, value in item.items():
+            if key not in new_data[index].keys():
+                continue
+            new_data[index][key] = value
 
 # Final transform to make the data useable for the website
 web_data = {"info": {}, "item": {}}
