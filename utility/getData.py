@@ -213,7 +213,7 @@ for item in new_data:
 for key, value in web_data["info"].items():
     web_data["info"][key] = [min(value), max(value)]
 
-with open("data.js", mode="w", encoding="UTF-8") as file:
+with open(f"data{"" if rm_found else "_norm"}.js", mode="w", encoding="UTF-8") as file:
     file.write("const data = ")
     json.dump(web_data, file, indent=3)
     file.write(";")
